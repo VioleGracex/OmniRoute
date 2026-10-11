@@ -1,0 +1,151 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  width: 320px;
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 16px;
+  font-size: 13px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 15px;
+  color: #38bdf8;
+}
+
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-pill.online {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid #059669;
+}
+
+.status-pill.offline {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border: 1px solid #dc2626;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.card {
+  background-color: #1e293b;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #334155;
+}
+
+.card-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.label {
+  color: #cbd5e1;
+}
+
+.val {
+  font-family: monospace;
+  color: #38bdf8;
+}
+
+.modality-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.modality-item {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.mod-icon {
+  font-size: 16px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.btn {
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background-color: #0284c7;
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: #334155;
+  color: #f8fafc;
+}
+
+.footer {
+  text-align: center;
+  font-size: 10px;
+  color: #64748b;
+  margin-top: 8px;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OmniRoute BEI Router</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <span class="badge-icon">⚡</span>
+      <span class="title">OmniRoute BEI</span>
+    </div>
+    <div id="statusIndicator" class="status-pill offline">
+      <span class="dot"></span>
+      <span id="statusText">Offline</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Bridge Connection</div>
+    <div class="info-row">
+      <span class="label">Local Port:</span>
+      <span class="val">127.0.0.1:58930</span>
+    </div>
+    <div class="info-row">
+      <span class="label">Router Port:</span>
+      <span class="val">localhost:20128</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Active Modalities</div>
+    <div class="modality-grid">
+      <div class="modality-item" id="chatModality">
+        <span class="mod-icon">💬</span>
+        <span class="mod-name">Chat / Code</span>
+      </div>
+      <div class="modality-item" id="imageModality">
+        <span class="mod-icon">🎨</span>
+        <span class="mod-name">Images</span>
+      </div>
+      <div class="modality-item" id="musicModality">
+        <span class="mod-icon">🎵</span>
+        <span class="mod-name">Music</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Quick Open Web Tabs</div>
+    <div class="button-group">
+      <button id="btnOpenGemini" class="btn btn-primary">Open Gemini</button>
+      <button id="btnOpenChatGPT" class="btn btn-secondary">Open ChatGPT</button>
+      <button id="btnOpenSuno" class="btn btn-secondary">Open Suno</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Zero API Key Router · Port 58930</span>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

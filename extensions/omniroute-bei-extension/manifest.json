@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "OmniRoute BEI Router",
+  "version": "1.0.0",
+  "description": "Browser Extension Interface (BEI) for OmniRoute. Zero-API-key Chat, Coding, Image, and Music routing via active browser sessions.",
+  "permissions": ["tabs", "tabGroups", "scripting", "storage", "downloads"],
+  "host_permissions": [
+    "https://gemini.google.com/*",
+    "https://accounts.google.com/*",
+    "https://chatgpt.com/*",
+    "https://suno.com/*",
+    "https://*.suno.com/*",
+    "*://*.googleusercontent.com/*",
+    "*://*.gstatic.com/*",
+    "*://*.oaiusercontent.com/*",
+    "*://*.openai.com/*",
+    "http://127.0.0.1:58930/*",
+    "http://localhost:58930/*",
+    "http://127.0.0.1:20128/*",
+    "http://localhost:20128/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": ["scripts/protocol.js", "scripts/gemini_content.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://chatgpt.com/*"],
+      "js": ["scripts/protocol.js", "scripts/chatgpt_content.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://suno.com/*"],
+      "js": ["scripts/protocol.js", "scripts/suno_content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "OmniRoute BEI Router",
+    "default_popup": "popup.html"
+  }
+}

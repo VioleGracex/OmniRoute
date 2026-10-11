@@ -1,0 +1,13 @@
+{
+  "name": "omniroute-bei-bridge",
+  "version": "1.0.0",
+  "description": "Local HTTP and WebSocket Bridge Sidecar for OmniRoute BEI",
+  "type": "module",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
