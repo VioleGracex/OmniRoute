@@ -138,6 +138,15 @@ async function authorizeConnection(request: import("http").IncomingMessage): Pro
     if (await isDashboardCookieAuthenticated(request)) {
       return { authorized: true, sessionId };
     }
+    try {
+      const { getSettings } = await import("@/lib/db/settings");
+      const settings = await getSettings();
+      if (settings.requireLogin === false) {
+        return { authorized: true, sessionId };
+      }
+    } catch {
+      // Fall through to unauthenticated
+    }
     return { authorized: false, sessionId, error: "Missing token" };
   }
 

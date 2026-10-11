@@ -250,8 +250,8 @@ export function bootstrapEnv({ dataDirOverride, quiet = false } = {}) {
   }
 
   // ── Warn about default password ────────────────────────────────────────────
-  if (merged.INITIAL_PASSWORD === "CHANGEME" || !merged.INITIAL_PASSWORD?.trim()) {
-    log("⚠️  INITIAL_PASSWORD is not set — using default 'CHANGEME'. Change it in Settings!");
+  if (merged.INITIAL_PASSWORD === "CHANGEME") {
+    log("⚠️  INITIAL_PASSWORD is using default 'CHANGEME'. Change it in Settings!");
   }
 
   // ── Decrypt-probe: verify STORAGE_ENCRYPTION_KEY matches encrypted data (#1622) ─

@@ -160,7 +160,7 @@ export async function getSettings() {
     requestRetry: 3,
     maxRetryIntervalSec: 30,
     antigravitySignatureCacheMode: "enabled",
-    requireLogin: true,
+    requireLogin: false,
     oidcEnabled: false,
     oidcIssuer: "",
     oidcClientId: "",
