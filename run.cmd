@@ -6,6 +6,7 @@ echo ================================================================
 echo.
 
 cd /d "%~dp0"
+set OMNIROUTE_USE_TURBOPACK=0
 
 echo [1/2] Launching BEI Bridge Sidecar (Port 58930)...
 start "OmniRoute BEI Bridge (:58930)" /min node sidecars\omniroute-bei-bridge\server.mjs

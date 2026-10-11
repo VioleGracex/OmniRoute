@@ -52,6 +52,14 @@ export class BridgeState {
   handleExtensionMessage(msg) {
     const { command, payload } = msg;
 
+    if (command === "PING") {
+      try {
+        this.sendToExtension({ command: "PONG" });
+      } catch {}
+      return;
+    }
+    if (command === "PONG") return;
+
     if (command === "TABS_INVENTORY") {
       this.tabs = payload.tabs || [];
       return;

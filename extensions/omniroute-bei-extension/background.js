@@ -22,6 +22,23 @@ chrome.runtime.onStartup.addListener(() => {
   connectWebSocket();
 });
 
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === "complete" && tab.url) {
+    if (
+      tab.url.includes("gemini.google.com") ||
+      tab.url.includes("chatgpt.com") ||
+      tab.url.includes("suno.com")
+    ) {
+      connectWebSocket();
+      setTimeout(sendTabsInventory, 1000);
+    }
+  }
+});
+
+chrome.tabs.onRemoved.addListener(() => {
+  sendTabsInventory();
+});
+
 function connectWebSocket() {
   if (
     socket &&
@@ -37,6 +54,7 @@ function connectWebSocket() {
       isConnected = true;
       updateBadge(true);
       console.log("[OmniRoute BEI] Connected to bridge daemon on port 58930");
+      startHeartbeat();
 
       // Send active tabs handshake
       sendTabsInventory();
@@ -53,12 +71,14 @@ function connectWebSocket() {
 
     socket.onclose = () => {
       isConnected = false;
+      stopHeartbeat();
       updateBadge(false);
       scheduleReconnect();
     };
 
     socket.onerror = () => {
       isConnected = false;
+      stopHeartbeat();
       updateBadge(false);
     };
   } catch (err) {
@@ -69,6 +89,24 @@ function connectWebSocket() {
 function scheduleReconnect() {
   if (reconnectTimer) clearTimeout(reconnectTimer);
   reconnectTimer = setTimeout(connectWebSocket, 3000);
+}
+
+let heartbeatTimer = null;
+
+function startHeartbeat() {
+  stopHeartbeat();
+  heartbeatTimer = setInterval(() => {
+    if (socket && socket.readyState === WebSocket.OPEN) {
+      socket.send(JSON.stringify({ command: "PING", timestamp: Date.now() }));
+    }
+  }, 10000);
+}
+
+function stopHeartbeat() {
+  if (heartbeatTimer) {
+    clearInterval(heartbeatTimer);
+    heartbeatTimer = null;
+  }
 }
 
 function updateBadge(connected) {
